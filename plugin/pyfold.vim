@@ -1,9 +1,10 @@
 
 " Python-mode folding functions
 
-setlocal foldmethod=expr
-setlocal foldexpr=PythonFoldingExpr(v:lnum)
-setlocal foldtext=PythonFoldingText()
+autocmd FileType python setlocal foldmethod=expr
+autocmd FileType python setlocal foldexpr=PythonFoldingExpr(v:lnum)
+autocmd FileType python setlocal foldtext=PythonFoldingText()
+autocmd FileType python normal! zM
 
 let s:def_regex = '^\s*\%(class\|def\) \w\+'
 let s:blank_regex = '^\s*$'
