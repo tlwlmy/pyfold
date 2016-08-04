@@ -4,7 +4,7 @@
 autocmd FileType python setlocal foldmethod=expr
 autocmd FileType python setlocal foldexpr=PythonFoldingExpr(v:lnum)
 autocmd FileType python setlocal foldtext=PythonFoldingText()
-autocmd FileType python normal! zM
+autocmd FileType python normal! zm
 
 let s:def_regex = '^\s*\%(class\|def\) \w\+'
 let s:blank_regex = '^\s*$'
@@ -88,7 +88,7 @@ fun! PythonFoldingExpr(lnum) "{{{
 
     " Handle nested defs but only for files shorter than
     " g:pymode_folding_nest_limit lines due to performance concerns
-    if line('$') < g:pymode_folding_nest_limit && indent(prevnonblank(a:lnum))
+    if line('$') < 1000 && indent(prevnonblank(a:lnum))
         let curpos = getpos('.')
         try
             let last_block = s:BlockStart(a:lnum)
